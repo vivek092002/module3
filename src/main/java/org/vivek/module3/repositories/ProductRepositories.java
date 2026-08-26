@@ -12,9 +12,11 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepositories extends JpaRepository<Product, Long> {
-    List<Product>  findByTitle(String title);
+
+    List<Product>  findByOrderByPrice();
+
     List<Product> findByCreatedAtAfter(LocalDateTime after);
 
-    @Query("select e from product e where e.title = ?1 and e.price=?2" )
+    @Query("select e from Product e where e.title = ?1 and e.price=?2" )
     Optional<Product> findByTitleAndPrice(String title, BigDecimal price);
 }
