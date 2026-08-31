@@ -1,5 +1,6 @@
 package org.vivek.module3.repositories;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,8 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepositories extends JpaRepository<Product, Long> {
+
+    List<Product> findBy(Sort sort);
 
     List<Product>  findByOrderByPrice();
 
